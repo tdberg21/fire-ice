@@ -5,6 +5,7 @@ import { fetchHouseData } from '../../helper/apiCalls.js';
 import { scrubHouseData } from '../../helper/dataCleaners.js';
 import { addHouses } from '../../actions';
 import PropTypes from 'prop-types';
+// import wolf from '../../../public/wolf';
 
 
 export class CardContainer extends Component {
@@ -26,11 +27,19 @@ export class CardContainer extends Component {
   }
   
   render() {
-    return (
-      <div className='Container'>
-        {this.cardsToDisplay(this.props.houses)}
-      </div>
-    );
+    if (this.props.houses.length > 1) {
+      return (
+        <div className='Container'>          
+          {this.cardsToDisplay(this.props.houses)}
+        </div>
+      );
+    } else {
+      return (
+        <div className='Container'>
+          <img src='./wolf.gif' alt='horse-gif'/>
+        </div> 
+      );
+    }
   }
 }
 
