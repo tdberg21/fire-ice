@@ -4,15 +4,14 @@ import Card from '../Card/Card.js';
 import { fetchHouseData } from '../../helper/apiCalls.js';
 import { scrubHouseData } from '../../helper/dataCleaners.js';
 import { addHouses } from '../../actions';
+import PropTypes from 'prop-types';
 
 
 class CardContainer extends Component {
 
   async componentDidMount() {
     const results = await fetchHouseData();
-    console.log(results)
     const cleanHouses = await scrubHouseData(results);
-    console.log(cleanHouses);
     this.props.addHouses(cleanHouses);
   }
 
@@ -41,3 +40,8 @@ const mapDispatchToProps = dispatch => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);
 
+
+CardContainer.propTypes = {
+  houses: PropTypes.array,
+  addHouses: PropTypes.func.isRequired
+};
