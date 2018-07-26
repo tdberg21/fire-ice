@@ -4,7 +4,17 @@ import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
 import { fakeAction } from '../../actions';
+import { fetchHouseData } from '../../helper/apiCalls.js';
+import { scrubHouseData } from '../../helper/dataCleaners.js';
+
 class App extends Component {
+
+  async componentDidMount() {
+    const results = await fetchHouseData();
+    console.log(results)
+    const cleanHouses = await scrubHouseData(results);
+    console.log(cleanHouses);
+  }
 
   render() {
     return (
