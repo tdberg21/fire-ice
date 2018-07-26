@@ -1,10 +1,13 @@
 import { scrubMembers } from './dataCleaners';
 
-export const fetchHouseData = async () => {
+export const fetchHouseData = () => {
   const url = 'http://localhost:3001/api/v1/houses';
-  const response = await fetch(url);
-  const results = await response.json();
-  return results;
+  // const response = await fetch(url);
+  // const results = await response.json();
+  // return results;
+  return fetch(url)
+    .then(response => response.json());
+
 };
 
 export const fetchMembers = async (members) => {

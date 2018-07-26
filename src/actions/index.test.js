@@ -1,7 +1,7 @@
-import * as actions from '../actions'
+import * as actions from '../actions';
 
 describe('actions', () => {
-  it('should have a type of ADD_TODO', () => {
+  it('should have a type of ADD_HOUSES', () => {
     const houses = ['taco', 'steak', 'hamburgers'];
     const expectedAction = {
       type: 'ADD_HOUSES',
