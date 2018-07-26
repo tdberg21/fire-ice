@@ -6,16 +6,9 @@ import { connect } from 'react-redux';
 import { addHouses } from '../../actions';
 import { fetchHouseData } from '../../helper/apiCalls.js';
 import { scrubHouseData } from '../../helper/dataCleaners.js';
+import CardContainer from '../CardContainer/CardContainer.js';
 
 class App extends Component {
-
-  async componentDidMount() {
-    const results = await fetchHouseData();
-    console.log(results)
-    const cleanHouses = await scrubHouseData(results);
-    console.log(cleanHouses);
-    this.props.addHouses(cleanHouses);
-  }
 
   render() {
     return (
@@ -23,12 +16,13 @@ class App extends Component {
         <div className='App-header'>
           <img src={logo} className='App-logo' alt='logo' />
           <h2>Welcome to Westeros</h2>
-          <button onClick={() => {
+          {/* <button onClick={() => {
             this.props.fakeAction();
             alert(this.props.fake);
-          }}> FAKE ACTION</button>
+          }}> FAKE ACTION</button> */}
         </div>
         <div className='Display-info'>
+          <CardContainer/>
         </div>
       </div>
     );
@@ -40,10 +34,4 @@ App.propTypes = {
   addHouses: func.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  houses: state.houses
- });
-const mapDispatchToProps = dispatch => ({ 
-  addHouses: (houses) => dispatch(addHouses(houses))
-});
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
