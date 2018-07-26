@@ -3,7 +3,7 @@ import PropTypes, { shape, func, string } from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { fakeAction } from '../../actions';
+import { addHouses } from '../../actions';
 import { fetchHouseData } from '../../helper/apiCalls.js';
 import { scrubHouseData } from '../../helper/dataCleaners.js';
 
@@ -14,6 +14,7 @@ class App extends Component {
     console.log(results)
     const cleanHouses = await scrubHouseData(results);
     console.log(cleanHouses);
+    this.props.addHouses(cleanHouses);
   }
 
   render() {
@@ -36,11 +37,13 @@ class App extends Component {
 
 App.propTypes = {
   fake: shape({ fake: string }),
-  fakeAction: func.isRequired
+  addHouses: func.isRequired
 };
 
-const mapStateToProps = ({ fake }) => ({ fake });
-const mapDispatchToProps = dispatch => ({ fakeAction:
-  () => dispatch(fakeAction())
+const mapStateToProps = (state) => ({
+  houses: state.houses
+ });
+const mapDispatchToProps = dispatch => ({ 
+  addHouses: (houses) => dispatch(addHouses(houses))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);
