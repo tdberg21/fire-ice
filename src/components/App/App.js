@@ -29,9 +29,4 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  fake: shape({ fake: string }),
-  addHouses: func.isRequired
-};
-
 export default App;

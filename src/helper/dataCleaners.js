@@ -10,8 +10,15 @@ export const scrubHouseData = data => {
       titles: house.titles,
       ancestralWeapons: house.ancestralWeapons,
       coatOfArms: house.coatOfArms,
-      words: house.words
+      words: house.words,
+      swornMembers: house.swornMembers
     };
   });
   return houses;
 };
+
+export const scrubMembers = members => (members.map(member => {
+  member = member.split('characters/')[1];
+  return member;
+})
+);
