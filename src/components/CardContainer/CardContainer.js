@@ -5,7 +5,7 @@ import { fetchHouseData } from '../../helper/apiCalls.js';
 import { scrubHouseData } from '../../helper/dataCleaners.js';
 import { addHouses } from '../../actions';
 import PropTypes from 'prop-types';
-// import wolf from '../../../public/wolf';
+import wolf from './wolf.gif';
 
 
 export class CardContainer extends Component {
@@ -36,7 +36,7 @@ export class CardContainer extends Component {
     } else {
       return (
         <div className='Container'>
-          <img src='./wolf.gif' alt='horse-gif'/>
+          <img src={wolf} alt='horse-gif' className='wolf'/>
         </div> 
       );
     }
