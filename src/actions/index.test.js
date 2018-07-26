@@ -12,4 +12,16 @@ describe('actions', () => {
 
     expect(result).toEqual(expectedAction);
   });
+
+  it('should have a type of Members', () => {
+    const members = ['Draco', 'Harry', 'Ron'];
+    const expectedAction = {
+      type: 'ADD_MEMBERS',
+      members
+    };
+
+    const result = actions.addMembers(members);
+
+    expect(result).toEqual(expectedAction);
+  });
 });

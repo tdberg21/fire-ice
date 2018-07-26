@@ -7,11 +7,15 @@ import { addHouses } from '../../actions';
 import PropTypes from 'prop-types';
 
 
-class CardContainer extends Component {
+export class CardContainer extends Component {
 
   async componentDidMount() {
     const results = await fetchHouseData();
     const cleanHouses = await scrubHouseData(results);
+    this.addHousesToStore(cleanHouses);
+  }
+
+  addHousesToStore = cleanHouses => {
     this.props.addHouses(cleanHouses);
   }
 
@@ -30,11 +34,11 @@ class CardContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   houses: state.houses
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   addHouses: (houses) => dispatch(addHouses(houses))
 });
 
