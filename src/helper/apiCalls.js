@@ -7,8 +7,13 @@ export const fetchHouseData = async () => {
   return results;
 };
 
-export const fetchMembers = (members) => {
+export const fetchMembers = async (members) => {
   const cleanedMembers = scrubMembers(members);
-  
-  console.log(cleanedMembers);
+  const swornMembers = await cleanedMembers.map(async id => {
+    let url = `http://localhost:3001/api/v1/character/${id}`; 
+    let response = await fetch(url);
+    let results = await response.json();
+    return await results.name;
+  });
+  return await Promise.all(swornMembers);
 };
