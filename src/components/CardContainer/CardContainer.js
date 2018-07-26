@@ -24,7 +24,7 @@ class CardContainer extends Component {
   
   render() {
     return (
-      <div className='CardContainer'>
+      <div className='Container'>
         {this.cardsToDisplay(this.props.houses)}
       </div>
     );
