@@ -1,5 +1,4 @@
-import React from 'react';
-import { CardContainer, mapStateToProps, mapDispatchToProps } from './CardContainer.js';
+import { mapStateToProps, mapDispatchToProps } from './CardContainer.js';
 import { addHouses } from '../../actions/index.js';
 
 describe('Card Container TESTS', () => {

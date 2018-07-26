@@ -11,10 +11,11 @@ describe('memberReducer tests', () => {
     const mockMembers = ['Harry', 'Ron', 'Neville'];
     const mockAction = {
       type: 'ADD_MEMBERS',
+      house: 'Gryffindor',
       members: mockMembers
     };
     const results = memberReducer(undefined, mockAction);
 
-    expect(results).toEqual(mockMembers);
+    expect(results).toEqual({Gryffindor: mockMembers});
   });
 });
