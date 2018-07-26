@@ -3,7 +3,8 @@ export const addHouses = (houses) => ({
   houses
 });
 
-export const addMembers = (members) => ({
+export const addMembers = (members, house) => ({
   type: 'ADD_MEMBERS',
+  house,
   members
 });
